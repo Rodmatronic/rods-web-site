@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Widgets Grid</title>
+  <title>Rod's lair</title>
   <link rel="stylesheet" href="css.css">
   <style>
     .container {
       width: 95%;
       margin: auto;
       padding: 20px;
+      position: relative;
+    }
+
+    .visit-count {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
 
     .grid {
@@ -60,6 +73,7 @@
 <body>
 
 <div class="container">
+  <div class="visit-count" id="visit-count">Visits: 0</div>
   <h2>Welcome!</h2>
   <p>This is where I put my dumb projects.</p>
 
@@ -90,6 +104,17 @@
   </div>
 
 </div>
+
+<script>
+  // JavaScript to handle visit count
+  (function() {
+    const visitCountElement = document.getElementById('visit-count');
+    let visitCount = localStorage.getItem('visitCount') || 0;
+    visitCount++;
+    localStorage.setItem('visitCount', visitCount);
+    visitCountElement.textContent = `Visits: ${visitCount}`;
+  })();
+</script>
 
 </body>
 </html>
